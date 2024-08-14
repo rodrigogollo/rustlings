@@ -21,8 +21,13 @@ fn main() {
     //     println!("Result: {}", result);
     // }
 
-    let result = sum(cube, 3, 5);
-    println!("res: {}", result);
+    // let result = sum(cube, 3, 5);
+
+    let x = 6;
+    let result = factorial(x);
+    let result2 = factorial2(x);
+    let result3 = factorial3(1, 1, x);
+    println!("res: {}, {}, {}", result, result2, result3);
 }
 
 fn abs(x: i32) -> i32 {
@@ -56,4 +61,28 @@ fn square(x: i32) -> i32 {
 
 fn cube(x: i32) -> i32 {
     return x * x * x;
+}
+
+fn factorial(x: i32) -> i32 {
+    if x == 1 {
+        return 1;
+    }
+    return x * factorial(x-1);
+}
+
+fn factorial2(max: i32) -> i32 {
+    let mut counter = 1;
+    let mut result = 1;
+    while counter <= max {
+        result = result * counter; 
+        counter = counter + 1;
+    }
+    return result;
+}
+
+fn factorial3(x: i32, result: i32, max: i32) -> i32 {
+    if x > max {
+        return result;
+    }
+    return factorial3(x+1, result * x, max);
 }
